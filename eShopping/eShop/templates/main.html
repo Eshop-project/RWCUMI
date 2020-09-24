@@ -28,7 +28,7 @@
                 <a href="{% url 'login' %}?next={% url 'store' %}" class="btn btn-success">Login</a>
                 <!--{blah blah} ?next={{request.path}} <- this code will redirect to the previous page, if changed
                 to a specific location then it'll always redirect to said url unless previously written in. -->
-                <a href="{% url 'signup' %}" class="btn btn-success">Sign Up</a>
+                <a href="{% url 'signup' %}?next={% url 'store' %}" class="btn btn-success">Sign Up</a>
                 <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
                 <p id="cart-total">0</p>
 
