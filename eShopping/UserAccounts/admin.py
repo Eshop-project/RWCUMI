@@ -18,6 +18,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = Account
+        # This is the meta data for the user attributes, if you want attr. to be included it needs to be in this tuple.
         fields = ('email','username','first_name','last_name')
 
     def clean_password2(self):
@@ -37,7 +38,7 @@ class UserCreationForm(forms.ModelForm):
         return user
 
 
-class UserChangeForm(forms.ModelForm):
+class UserChangeForm(forms.ModelForm): # Not sure if this actually can "update" the user model
     """A form for updating users. Includes all the fields on
     the user, but replaces the password field with admin's
     password hash display field.
@@ -65,7 +66,7 @@ class UserAdmin(BaseUserAdmin):
     # that reference specific fields on auth.User.
     list_display = ('email', 'username', 'is_admin')
     list_filter = ('is_admin',)
-    fieldsets = (
+    fieldsets = (       # This is what the super user can see from the user model.
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('username', 'first_name', 'last_name',)}),
         ('Permissions', {'fields': ('is_admin',)}),
