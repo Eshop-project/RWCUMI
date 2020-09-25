@@ -16,6 +16,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    def get_price(self):
+        return self.price
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
