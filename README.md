@@ -1,4 +1,6 @@
 # RWCUMI
 Repo with custom user model implemented
 
-OUT OF DATE
+Just my work I'm doing
+
+Also, updated products model with an attr 'description'
