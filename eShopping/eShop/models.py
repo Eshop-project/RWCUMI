@@ -12,6 +12,7 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
     price = models.FloatField()
+    description = models.TextField(default='', null=True, blank=False)
     digital = models.BooleanField(default=False, null=True, blank=False)
 
     def __str__(self):

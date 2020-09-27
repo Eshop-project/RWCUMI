@@ -1,106 +1,122 @@
+/* These are my edits to the original, check whether you can override the bootstrap defaults
+
+Looked up some info, best wait to @override is to use id such as the one below. Thos keeps the coolness of the bootstrap css
+but allows our overweighted css[indicated by the id] to take over.
+
+After messing with boostrap defaults, it is more challenging to change around details along with keeping the javascript. I'd
+change the complete format and keep different css and html aspects and use my own javascript. Perfect opprotunity to do so and 
+show off to the group. Will take some time to write out.
+
+Way to write variables in css:
+
+:root{                                      # This is the spot where all global calls can come from
+    --main-color: white;
+}
+
+#div1 {
+  background-color: var(--main-color);      # Refernce global calls from the var() function
+}
+
+*/
+
+:root{    /*GLOBAL VARIABLES*/
+  --main-background: white;
+}
+
 body{
-	background-color: hsl(0, 0%, 98%);
+  background-color: var(--main-background);
+
+  font-family: 'Times New Roman';
+  margin: 0;
 }
 
-h1,h2,h3,h4,h5,h6{
-	color:#090a0a(0, 0%, 30%);
+.navbar{
+  overflow: hidden;
+  z-index: 1;
+  background-color: #111;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 7%;
+
+  transition: 0.5s;
 }
 
-.box-element{
-	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
-	background-color: #fff;
-	border-radius: 4px;
-	padding: 10px;
+  .navbar span {
+    text-align: center;
+  }
+
+  .navbar .navbar-brand {
+    font-size: 25px;
+    padding: 10px 20px;
+    border-right: 3px solid #818181 ;
+  }
+
+  .navbar a {
+    padding: 5px 5px;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    color: #818181;
+    display: inline-block;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .navbar a:hover {
+    color: #f1f1f1;
+  }
+
+  .navbar .left-side{
+    float: left;
+  }
+
+  .navbar .right-side{
+    float: right;
+    padding: 10px 15px 0px 0px;
+  }
+  .navbar .right-side input[type=search] {
+    transition: 0.5s;
+    outline: none;
+    height: 140%;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    font-size: 16px;
+  }
+  .navbar .right-side input[type=search]:focus {
+    border: 3px solid #555;
+  }
+  .navbar .right-side button[type=submit] {
+    background-color: black; /* Green */
+    box-sizing: border-box;
+    border: none;
+    color: #818181;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .navbar .right-side button[type=submit]:hover {
+    color: #f1f1f1;
+  }
+
+  .navbar .search{
+    display: inline-block;
+  }
+
+.container {
+  padding: 75px 50px 0px 50px;
 }
 
-.thumbnail{
-	width: 100%;
-	height: 200px;
-	-webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-    -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-    box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-}
+  .container .row .product {
+    padding: 20px 20px 0px 0px;
+    position: relative;
+    display: inline-block;
+    width: 23%;
+  }
 
-.product{
-	border-radius: 0 0 4px 4px;
-	margin-top: 10px;
-}
+/* The fix is that yes, vertical padding and margin are relative to width, but top and bottom aren't.
 
-.bg-dark{
-	background-color: #01365d!important;
-}
-
-#cart-icon{
-	width:50px;
-	display: inline-block;
-	margin-left: px;
-}
-
-#cart-total{
-	display: block;
-	text-align: center;
-	color:#fff;
-	background-color: red;
-	width: 20px;
-	height: 25px;
-	border-radius: 50%;
-	font-size: 14px;
-}
-
-.col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
-	margin-top: 10px;
-}
-
-.btn{
-	border-radius: 0;
-}
-
-.row-image{
-	width: 100px;
-}
-
-.form-field{
-	width:250px;
-	display: inline-block;
-	padding: 5px;
-}
-
-.cart-row{
-	display: flex;
-    align-items: flex-stretch;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ececec;
-
-}
-
-.quantity{
-	display: inline-block;
-	font-weight: 700;
-	padding-right:10px;
-	
-
-}
-
-.chg-quantity{
-	width: 12px;
-	cursor: pointer;
-	display: block;
-	margin-top: 5px;
-	transition:.1s;
-}
-
-.chg-quantity:hover{
-	opacity: .6;
-}
-
-
-.hidden{
-	display: none!important;
-}
-
-/* These are my edits to the original, check whether you can override the bootstrap defaults */
-
-#search-button{
-	background-color: red;
-}
+So just place a div inside another, and in the inner div, use something like top:50% (remember position matters if it still doesn't work) */

@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 
 <!-- Just an update on the page scheme as far as looks also some basic bootstrap content explained
-
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+-------------------------------------------------------------------------------------------------------------
+- NO LONGER IN USE - NO LONGER IN USE - NO LONGER IN USE - NO LONGER IN USE - NO LONGER IN USE - NO LONGER IN USE - 
         .navbar-brand for your company, product, or project name.
         .navbar-nav for a full-height and lightweight navigation (including support for dropdowns).
         .navbar-toggler for use with our collapse plugin and other navigation toggling behaviors.
         .form-inline for any form controls and actions.
         .navbar-text for adding vertically centered strings of text.
         .collapse.navbar-collapse for grouping and hiding navbar contents by a parent breakpoint.
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+-------------------------------------------------------------------------------------------------------------
+
+Switching to my own css and javascript
+
+This entire html is not right, compare to the self made navbar and check what you can do to make it better.
+
 -->
 
 {% load static %}
@@ -15,68 +24,45 @@
 <html>
     <!-- Possibly adding in bootstrap stylesheets, but thinking I can make some simple shit too -->
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
         <title>Mock Store App</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
-
+        <link rel='stylesheet' type="text/css" href="{% static 'css/main.css'%}">
     </head>
     <!-- Body, but damnnear just the nav bar, don't like complicated class names -->
     <body>
 
     <div>
 
-        <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
-            <!-- Navbar brand, info on bar, add more links to keep them -->
-            <a class='navbar-brand' href="{% url 'store' %}">eShoppin'</a>
+        <div class='navbar'>
 
-            <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+            <!-- Deleted collapse button, if re-introduced, it'll be before navbar-brand or after every other element -->
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Drop_down
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Testing</a>
-                    </li>
-                </ul>
-
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" id='search-button' type="submit">Search</button>
+            <span class='left-side'>
+                <!-- Navbar brand, info on bar, add more links to keep them -->
+                <a class='navbar-brand' href='{% url "store" %}'>eShoppin'</a>
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+            </span>
+<!-- For more information of form tags check: https://www.w3schools.com/tags/tag_form.asp 
+For more information of input tags check: https://www.w3schools.com/tags/tag_input.asp -->
+            <span class='right-side'>
+                <form class='search'>
+                    <input type='search' placeholder=''>
+                    <!-- Could also be done with an input tag, type='submit' -->
+                    <button type='submit'>O</button>
                 </form>
 
-                <div class="form-inline my-2 my-lg-0">
-                    <a href="{% url 'login' %}?next={% url 'store' %}" class="btn btn-success">Login</a>
-                    <!--{blah blah} ?next={{request.path}} <- this code will redirect to the previous page, if changed
-                    to a specific location then it'll always redirect to said url unless previously written in. -->
-                    <a href="{% url 'signup' %}?next={% url 'store' %}" class="btn btn-success">Sign Up</a>
-                    <a href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+                <a href="{% url 'login' %}?next={% url 'store' %}">Login</a>
+                <!--{blah blah} ?next={{request.path}} <- this code will redirect to the previous page, if changed
+                to a specific location then it'll always redirect to said url unless previously written in. -->
+                <a href="{% url 'signup' %}?next={% url 'store' %}">Sign Up</a>
+                <a href="{% url 'cart' %}">Cart</a>
                     <p id="cart-total">0</p>
-                </div>
 
-            </div>
-        </nav>
+            </span>
+
+        </div>
 
     </div>
 
@@ -88,10 +74,7 @@
             {% endblock content %}
         </div>
      
-    
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <!-- Possible area to import self.js -->
 
     </body>
 

@@ -10,21 +10,28 @@
 
         {% for product in products_list  %}
         
-            <div class="col-lg-4">
-            <img class="thumbnail" src="{% static 'img/gameboy-blue.jpg' %}">
-                <div class="box-element product">
-                    <h6><strong>{{ product.name }}</strong></h6>
-                    <hr>
-                    <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
-                    <a class="btn btn-outline primary" href=#>View</a>
-                    <h4 style="display: inline-block;float: right">${{ product.price }}</h4>
+        <span class='product'>
 
+            
+
+            <div>
+                <img class="thumbnail" src="{% static 'img/google.png' %}">
+
+                <h3><strong>{{ product.name }}</strong></h3>
+                <div>
+                    <p style='display: inline-block;'>{{ product.description }}</p>
                 </div>
+                <button type='submit'>Add to Cart</button>
+                <a href='#'>View</a>
+                <h4>${{ product.price }}</h4>
             </div>
-        
+
+        </span>
+
         {% endfor %}
 
-        </div>
+    </div>
+
 {% else %}
 
     NO PRODUCTS
